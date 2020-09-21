@@ -1,0 +1,70 @@
+<div class="body-section">
+    <div class="example-table-container">
+
+        <div class="paginator">
+          <div class="pag-input">
+              <div class="start">
+                <label>Start</label>
+                <input type="number" [(ngModel)]="start" />
+            </div>
+            <div class="limit">
+                <label>Items per page</label>
+                <input type="number" [(ngModel)]="pageCount" (blur)="itemsPerPage()"/>
+            </div>
+          </div>
+           <div class="prev-next">
+              <div>
+                <button (click)="pagination('prev')" [disabled]="start == 0">Prev</button>
+                <button (click)="pagination('next')">Next</button>
+              </div>
+           </div>
+        </div>
+
+        <div class="table-section">
+          <table>
+            <thead>
+              <th>ID</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Album ID</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of tableData; let i = index">
+                <td>{{row.id}}</td>
+                <td>
+                  <div class="thumbnail">
+                      <a href={{row.url}} target="_blank">
+                          <img src={{row.thumbnailUrl}} class="img-responsive" width="50" height="50"/>
+                      </a>
+                  </div>
+                </td>
+                <td>
+                  <ng-container *ngIf="!row.isEdit">
+                    {{row.title}}
+                  </ng-container>
+                 <ng-container *ngIf="row.isEdit">
+                    <input class="form-control" type="text" [(ngModel)]="row.title" />
+                 </ng-container>
+                </td>
+                <td>
+                  {{row.albumId}}
+                </td>
+                <td >
+                  <div *ngIf="!row.isEdit">
+                      <button class="btn-primary" (click)="edit(row, i)">Edit</button>
+                      <button class="btn-warnig" (click)="deleterow(row)">Delete</button>
+                  </div>
+
+                  <div *ngIf="row.isEdit">
+                    <button class="btn-primary" (click)="cancel(row, i)">Save</button>
+                    <button class="btn" (click)="save(row, i)">Cancel</button>
+                </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+</div>

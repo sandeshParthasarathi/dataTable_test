@@ -1,0 +1,28 @@
+$ormea-blue: #19659D;
+$ormea-white: #FFFFFF;
+$ormea-black: #000000;
+$ormea-secondary-black: #1E1E30;
+$ormea-sucess: #5cb85c;
+$ormea-warn: #E8511D;
+$ormea-grey: grey;
+$ormea-light-grey: #7b858c;
+$background-color: #f8f9fa;
+$ormea-secondary-grey: #7b858c;
+$ormea-light-purple: #636496D4;
+$ormea-box-shadow: 0 0 2px $ormea-grey;
+
+$font-family: 'Roboto', sans-serif;
+
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin error-message{
+    color: $buddy-warn ; 
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 20px;
+}
